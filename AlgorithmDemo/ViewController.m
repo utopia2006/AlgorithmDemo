@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "Interview.h"
 
 @interface ViewController ()
 
@@ -17,7 +18,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
+    int array[10] = {23, 38, 29, 93, 3, 87,24,76,  2, 42};
+    //bubbleSort(array, 10);
+    //selectionSort(array, 10);
+    //insertionSort(array, 10);
+    binaryInsertionSort(array, 10);
+    
+    for (int i =0; i< 10; i++) {
+        NSLog(@"%d \n", array[i]);
+    }
 }
+
 
 
 @end

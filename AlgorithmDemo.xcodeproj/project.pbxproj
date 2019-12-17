@@ -15,6 +15,7 @@
 		018D7CA623A8B64100EF8E44 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 018D7CA523A8B64100EF8E44 /* main.m */; };
 		018D7CB023A8B64100EF8E44 /* AlgorithmDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 018D7CAF23A8B64100EF8E44 /* AlgorithmDemoTests.m */; };
 		018D7CBB23A8B64100EF8E44 /* AlgorithmDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 018D7CBA23A8B64100EF8E44 /* AlgorithmDemoUITests.m */; };
+		018D7CCD23A8B84C00EF8E44 /* Interview.c in Sources */ = {isa = PBXBuildFile; fileRef = 018D7CCC23A8B84C00EF8E44 /* Interview.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,8 @@
 		018D7CB623A8B64100EF8E44 /* AlgorithmDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AlgorithmDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		018D7CBA23A8B64100EF8E44 /* AlgorithmDemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AlgorithmDemoUITests.m; sourceTree = "<group>"; };
 		018D7CBC23A8B64100EF8E44 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		018D7CCB23A8B84C00EF8E44 /* Interview.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Interview.h; sourceTree = "<group>"; };
+		018D7CCC23A8B84C00EF8E44 /* Interview.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = Interview.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +108,8 @@
 				018D7C9723A8B63F00EF8E44 /* AppDelegate.m */,
 				018D7C9923A8B63F00EF8E44 /* ViewController.h */,
 				018D7C9A23A8B63F00EF8E44 /* ViewController.m */,
+				018D7CCB23A8B84C00EF8E44 /* Interview.h */,
+				018D7CCC23A8B84C00EF8E44 /* Interview.c */,
 				018D7C9C23A8B63F00EF8E44 /* Main.storyboard */,
 				018D7C9F23A8B64100EF8E44 /* Assets.xcassets */,
 				018D7CA123A8B64100EF8E44 /* LaunchScreen.storyboard */,
@@ -264,6 +269,7 @@
 			files = (
 				018D7C9B23A8B63F00EF8E44 /* ViewController.m in Sources */,
 				018D7CA623A8B64100EF8E44 /* main.m in Sources */,
+				018D7CCD23A8B84C00EF8E44 /* Interview.c in Sources */,
 				018D7C9823A8B63F00EF8E44 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
