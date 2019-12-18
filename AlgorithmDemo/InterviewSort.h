@@ -39,6 +39,7 @@ void shellSort(int arr[], int n);
 void quickSort(int *a, int left, int right);
 
 // 归并排序
+void mergeSort(int sourceArr[], int tempArr[], int startIndex, int endIndex);
 
 // 基数排序
 

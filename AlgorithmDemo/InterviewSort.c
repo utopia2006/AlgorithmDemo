@@ -191,3 +191,97 @@ void quickSort(int *a, int left, int right) {
     quickSort(a, i+1, right);//继续处理右边的 ，这里是一个递归的过程
 }
 
+void _merge(int sourceArr[],int tempArr[], int startIndex, int midIndex, int endIndex)
+{
+    int i = startIndex, j=midIndex+1, k = startIndex;
+    while(i!=midIndex+1 && j!=endIndex+1)
+    {
+        if(sourceArr[i] > sourceArr[j])
+            tempArr[k++] = sourceArr[j++];
+        else
+            tempArr[k++] = sourceArr[i++];
+    }
+    while(i != midIndex+1)
+        tempArr[k++] = sourceArr[i++];
+    while(j != endIndex+1)
+        tempArr[k++] = sourceArr[j++];
+    for(i=startIndex; i<=endIndex; i++)
+        sourceArr[i] = tempArr[i];
+}
+
+
+/**
+ 归并排序
+ 平均时间复杂度O(nlog2n)
+ 空间复杂度O(n)
+ 
+ @param sourceArr sourceArr description
+ @param tempArr tempArr description
+ @param startIndex startIndex description
+ @param endIndex endIndex description
+ */
+void mergeSort(int sourceArr[], int tempArr[], int startIndex, int endIndex)
+{
+    int midIndex;
+    if(startIndex < endIndex)
+    {
+        midIndex = startIndex + (endIndex-startIndex) / 2;//避免溢出int
+        mergeSort(sourceArr, tempArr, startIndex, midIndex);
+        mergeSort(sourceArr, tempArr, midIndex+1, endIndex);
+        _merge(sourceArr, tempArr, startIndex, midIndex, endIndex);
+    }
+}
+
+int maxbit(int data[], int n) //辅助函数，求数据的最大位数
+{
+    int maxData = data[0];              ///< 最大数
+    /// 先求出最大数，再求其位数，这样有原先依次每个数判断其位数，稍微优化点。
+    for (int i = 1; i < n; ++i)
+    {
+        if (maxData < data[i])
+            maxData = data[i];
+    }
+    int d = 1;
+    int p = 10;
+    while (maxData >= p)
+    {
+        //p *= 10; // Maybe overflow
+        maxData /= 10;
+        ++d;
+    }
+    return d;
+}
+
+// https://www.runoob.com/w3cnote/radix-sort.html
+
+//void radixSort(int data[], int n)
+//{
+//    int d = maxbit(data, n);
+//    int *tmp = new int[n];
+//    int *count = new int[10]; //计数器
+//    int i, j, k;
+//    int radix = 1;
+//    for(i = 1; i <= d; i++) //进行d次排序
+//    {
+//        for(j = 0; j < 10; j++)
+//            count[j] = 0; //每次分配前清空计数器
+//        for(j = 0; j < n; j++)
+//        {
+//            k = (data[j] / radix) % 10; //统计每个桶中的记录数
+//            count[k]++;
+//        }
+//        for(j = 1; j < 10; j++)
+//            count[j] = count[j - 1] + count[j]; //将tmp中的位置依次分配给每个桶
+//        for(j = n - 1; j >= 0; j--) //将所有桶中记录依次收集到tmp中
+//        {
+//            k = (data[j] / radix) % 10;
+//            tmp[count[k] - 1] = data[j];
+//            count[k]--;
+//        }
+//        for(j = 0; j < n; j++) //将临时数组的内容复制到data中
+//            data[j] = tmp[j];
+//        radix = radix * 10;
+//    }
+//    delete []tmp;
+//    delete []count;
+//}
