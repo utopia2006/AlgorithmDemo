@@ -1,12 +1,12 @@
 //
-//  Interview.c
+//  InterviewSort.c
 //  AlgorithmDemo
 //
 //  Created by chen on 2019/12/17.
 //  Copyright © 2019 chen. All rights reserved.
 //
 
-#include "Interview.h"
+#include "InterviewSort.h"
 #include <stdbool.h>
 
 int findInsertIndex(int array[], int L, int R, int value);
@@ -123,3 +123,71 @@ int findInsertIndex(int array[], int L, int R, int value) {
     return L;
     
 }
+
+/**
+ 希尔排序
+ 平均时间复杂度O(n的1.3次方,不确定，具体与增量序列的选择有关)
+ 最差时间复杂度O(n2)
+ 空间复杂度O(log2n)
+ 
+ @param arr 数组
+ @param n 元素个数
+ */
+void shellSort(int arr[], int n) {
+    // 计算increment sequence : 1, 4, 13, 40, 121, 364, 1093...
+    int h = 1;
+    while(h < n/3)
+        h = 3*h +1;
+    
+    while(h>=1) {
+        for (int i=h; i < n; i++) {
+            // 对arr[i], arr[i-h], arr[i-2*h], arr[i-3*h]...使用插入排序
+            int e = arr[i];
+            int j;
+            for (j=i; j>=h && e < arr[j-h]; j-= h)
+                arr[j] = arr[j-h];
+            arr[j] = e;
+        }
+        
+        h /= 3;
+    }
+}
+
+
+/**
+ 快速排序
+ 平均时间复杂度O(nlog2n)
+ 最差时间复杂度O(n2)
+ 空间复杂度O(log2n)
+ 
+ @param a 数组
+ @param left 左游标
+ @param right 右游标
+ */
+void quickSort(int *a, int left, int right) {
+    int i, j, t, temp;
+    if(left > right)
+        return;
+    
+    temp = a[left]; //temp中存的就是基准数
+    i = left;
+    j = right;
+    while(i != j) { //顺序很重要，要先从右边开始找
+        while(a[j] >= temp && i < j)
+            j--;
+        while(a[i] <= temp && i < j)//再找右边的
+            i++;
+        if(i < j)//交换两个数在数组中的位置
+        {
+            t = a[i];
+            a[i] = a[j];
+            a[j] = t;
+        }
+    }
+    //最终将基准数归位
+    a[left] = a[i];
+    a[i] = temp;
+    quickSort(a, left, i-1);//继续处理左边的，这里是一个递归的过程
+    quickSort(a, i+1, right);//继续处理右边的 ，这里是一个递归的过程
+}
+

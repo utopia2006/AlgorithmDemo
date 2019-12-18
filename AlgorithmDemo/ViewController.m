@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-#import "Interview.h"
+#import "InterviewSort.h"
 
 @interface ViewController ()
 
@@ -23,7 +23,9 @@
     //bubbleSort(array, 10);
     //selectionSort(array, 10);
     //insertionSort(array, 10);
-    binaryInsertionSort(array, 10);
+    //binaryInsertionSort(array, 10);
+    //quickSort(array, 0, 9);
+    shellSort(array, 10);
     
     for (int i =0; i< 10; i++) {
         NSLog(@"%d \n", array[i]);
