@@ -232,7 +232,9 @@ void mergeSort(int sourceArr[], int tempArr[], int startIndex, int endIndex)
     }
 }
 
-int maxbit(int data[], int n) //辅助函数，求数据的最大位数
+
+//辅助函数，求数据的最大位数
+int maxbit(int data[], int n)
 {
     int maxData = data[0];              ///< 最大数
     /// 先求出最大数，再求其位数，这样有原先依次每个数判断其位数，稍微优化点。
@@ -254,34 +256,82 @@ int maxbit(int data[], int n) //辅助函数，求数据的最大位数
 
 // https://www.runoob.com/w3cnote/radix-sort.html
 
-//void radixSort(int data[], int n)
-//{
-//    int d = maxbit(data, n);
-//    int *tmp = new int[n];
-//    int *count = new int[10]; //计数器
-//    int i, j, k;
-//    int radix = 1;
-//    for(i = 1; i <= d; i++) //进行d次排序
-//    {
-//        for(j = 0; j < 10; j++)
-//            count[j] = 0; //每次分配前清空计数器
-//        for(j = 0; j < n; j++)
-//        {
-//            k = (data[j] / radix) % 10; //统计每个桶中的记录数
-//            count[k]++;
-//        }
-//        for(j = 1; j < 10; j++)
-//            count[j] = count[j - 1] + count[j]; //将tmp中的位置依次分配给每个桶
-//        for(j = n - 1; j >= 0; j--) //将所有桶中记录依次收集到tmp中
-//        {
-//            k = (data[j] / radix) % 10;
-//            tmp[count[k] - 1] = data[j];
-//            count[k]--;
-//        }
-//        for(j = 0; j < n; j++) //将临时数组的内容复制到data中
-//            data[j] = tmp[j];
-//        radix = radix * 10;
-//    }
-//    delete []tmp;
-//    delete []count;
-//}
+/**
+ 基数排序
+
+ @param data data description
+ @param n n description
+ */
+void radixSort(int data[], int n)
+{
+    int d = maxbit(data, n);
+    int *tmp = (int*)malloc(sizeof(int)*n); //new int[n];
+    int *count = (int*)malloc(sizeof(int)*10); //new int[10]; //计数器
+    int i, j, k;
+    int radix = 1;
+    for(i = 1; i <= d; i++) //进行d次排序
+    {
+        for(j = 0; j < 10; j++)
+            count[j] = 0; //每次分配前清空计数器
+        for(j = 0; j < n; j++)
+        {
+            k = (data[j] / radix) % 10; //统计每个桶中的记录数
+            count[k]++;
+        }
+        for(j = 1; j < 10; j++)
+            count[j] = count[j - 1] + count[j]; //将tmp中的位置依次分配给每个桶
+        for(j = n - 1; j >= 0; j--) //将所有桶中记录依次收集到tmp中
+        {
+            k = (data[j] / radix) % 10;
+            tmp[count[k] - 1] = data[j];
+            count[k]--;
+        }
+        for(j = 0; j < n; j++) //将临时数组的内容复制到data中
+            data[j] = tmp[j];
+        radix = radix * 10;
+    }
+    free(tmp);//delete []tmp;
+    free(count);//delete []count;
+}
+
+
+void swap(int *a, int *b) {
+    int temp = *b;
+    *b = *a;
+    *a = temp;
+}
+
+void max_heapify(int arr[], int start, int end) {
+    // 建立父節點指標和子節點指標
+    int dad = start;
+    int son = dad * 2 + 1;
+    while (son <= end) { // 若子節點指標在範圍內才做比較
+        if (son + 1 <= end && arr[son] < arr[son + 1]) // 先比較兩個子節點大小，選擇最大的
+            son++;
+        if (arr[dad] > arr[son]) //如果父節點大於子節點代表調整完畢，直接跳出函數
+            return;
+        else { // 否則交換父子內容再繼續子節點和孫節點比較
+            swap(&arr[dad], &arr[son]);
+            dad = son;
+            son = dad * 2 + 1;
+        }
+    }
+}
+
+/**
+ 堆排序
+
+ @param arr arr description
+ @param len len description
+ */
+void heapSort(int arr[], int len) {
+    int i;
+    // 初始化，i從最後一個父節點開始調整
+    for (i = len / 2 - 1; i >= 0; i--)
+        max_heapify(arr, i, len - 1);
+    // 先將第一個元素和已排好元素前一位做交換，再重新調整，直到排序完畢
+    for (i = len - 1; i > 0; i--) {
+        swap(&arr[0], &arr[i]);
+        max_heapify(arr, 0, i - 1);
+    }
+}

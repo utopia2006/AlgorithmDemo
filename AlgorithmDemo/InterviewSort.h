@@ -10,7 +10,12 @@
 #define InterviewSort_h
 
 #include <stdio.h>
-// Reference https://www.cnblogs.com/yadiel-cc/p/11829360.html
+#include <stdlib.h>
+
+// 参考资料
+// 1、https://www.runoob.com/w3cnote/ten-sorting-algorithm.html
+// 2、https://www.cnblogs.com/yadiel-cc/p/11829360.html
+// 3、https://github.com/hustcc/JS-Sorting-Algorithm
 
 // 八大排序算法，平均时间复杂度、最坏时间复杂度，空间复杂度，稳定排序与非稳定排序
 
@@ -42,9 +47,10 @@ void quickSort(int *a, int left, int right);
 void mergeSort(int sourceArr[], int tempArr[], int startIndex, int endIndex);
 
 // 基数排序
+void radixSort(int data[], int n);
 
 // 堆排序
-
+void heapSort(int arr[], int len);
 
 
 #endif /* Interview_h */
