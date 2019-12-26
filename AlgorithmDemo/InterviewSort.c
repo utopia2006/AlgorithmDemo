@@ -8,8 +8,57 @@
 
 #include "InterviewSort.h"
 #include <stdbool.h>
+#include "ArrayList.h"
 
 int findInsertIndex(int array[], int L, int R, int value);
+
+#pragma mark - 辅助函数
+int getMaxValue(int data[], int n) {
+    int maxValue = data[0];
+    for (int i = 1; i < n; ++i)
+    {
+        if (maxValue < data[i])
+            maxValue = data[i];
+    }
+    return maxValue;
+}
+
+int getMinValue(int data[], int n) {
+    int minValue = data[0];
+    for (int i = 1; i < n; ++i)
+    {
+        if (minValue > data[i])
+            minValue = data[i];
+    }
+    return minValue;
+}
+
+void swap(int *a, int *b) {
+    int temp = *b;
+    *b = *a;
+    *a = temp;
+}
+
+//求数据的最大位数
+int maxbit(int data[], int n)
+{
+    int maxData = data[0];              ///< 最大数
+    /// 先求出最大数，再求其位数，这样有原先依次每个数判断其位数，稍微优化点。
+    for (int i = 1; i < n; ++i)
+    {
+        if (maxData < data[i])
+            maxData = data[i];
+    }
+    int d = 1;
+    int p = 10;
+    while (maxData >= p)
+    {
+        //p *= 10; // Maybe overflow
+        maxData /= 10;
+        ++d;
+    }
+    return d;
+}
 
 char *revertStr(char *str) {
     char *begin,*end;
@@ -30,6 +79,7 @@ char *revertStr(char *str) {
     return str;
 }
 
+#pragma mark - 冒泡排序
 // 冒泡排序（n-1趟）
 void bubbleSort(int array[], int n) {
     for (int i=0; i< n-1; i++) {
@@ -49,6 +99,7 @@ void bubbleSort(int array[], int n) {
     
 }
 
+#pragma mark - 选择排序
 // 选择排序(n-1趟)
 void selectionSort(int array[], int n) {
     for (int i=0; i < n-1; i++) {
@@ -69,6 +120,7 @@ void selectionSort(int array[], int n) {
     
 }
 
+#pragma mark - 插入排序
 // 插入排序(n-1趟)
 // Reference: https://www.jianshu.com/p/7cf0656e76dd
 void insertionSort(int array[], int n) {
@@ -124,6 +176,7 @@ int findInsertIndex(int array[], int L, int R, int value) {
     
 }
 
+#pragma mark - 希尔排序
 /**
  希尔排序
  平均时间复杂度O(n的1.3次方,不确定，具体与增量序列的选择有关)
@@ -153,7 +206,7 @@ void shellSort(int arr[], int n) {
     }
 }
 
-
+#pragma mark - 快速排序
 /**
  快速排序
  平均时间复杂度O(nlog2n)
@@ -209,7 +262,7 @@ void _merge(int sourceArr[],int tempArr[], int startIndex, int midIndex, int end
         sourceArr[i] = tempArr[i];
 }
 
-
+#pragma mark - 归并排序
 /**
  归并排序
  平均时间复杂度O(nlog2n)
@@ -233,27 +286,7 @@ void mergeSort(int sourceArr[], int tempArr[], int startIndex, int endIndex)
 }
 
 
-//辅助函数，求数据的最大位数
-int maxbit(int data[], int n)
-{
-    int maxData = data[0];              ///< 最大数
-    /// 先求出最大数，再求其位数，这样有原先依次每个数判断其位数，稍微优化点。
-    for (int i = 1; i < n; ++i)
-    {
-        if (maxData < data[i])
-            maxData = data[i];
-    }
-    int d = 1;
-    int p = 10;
-    while (maxData >= p)
-    {
-        //p *= 10; // Maybe overflow
-        maxData /= 10;
-        ++d;
-    }
-    return d;
-}
-
+#pragma mark - 基数排序
 // https://www.runoob.com/w3cnote/radix-sort.html
 
 /**
@@ -294,13 +327,6 @@ void radixSort(int data[], int n)
     free(count);//delete []count;
 }
 
-
-void swap(int *a, int *b) {
-    int temp = *b;
-    *b = *a;
-    *a = temp;
-}
-
 void max_heapify(int arr[], int start, int end) {
     // 建立父節點指標和子節點指標
     int dad = start;
@@ -318,8 +344,10 @@ void max_heapify(int arr[], int start, int end) {
     }
 }
 
+#pragma mark - 堆排序
+
 /**
- 堆排序
+ 堆排序(讲解:https://www.cnblogs.com/lanhaicode/p/10546257.html)
 
  @param arr arr description
  @param len len description
@@ -334,4 +362,109 @@ void heapSort(int arr[], int len) {
         swap(&arr[0], &arr[i]);
         max_heapify(arr, 0, i - 1);
     }
+}
+
+#pragma mark - 计数排序
+//https://www.itcodemonkey.com/article/11750.html
+
+//void countSort(int data[],int n) {
+//    int i,j,count,*data_p;
+//    data_p=(int*)malloc(sizeof(int)*n);
+//
+//    for(i=0;i<n;i++)//初始化data_p
+//        data_p[i]=0;
+//
+//    for(i=0;i<n;i++)
+//    {
+//        count=0;
+//        for(j=0;j<n;j++)//扫描待排序数组
+//            if(data[j]<data[i])//统计比data[i]值小的值的个数
+//                count++;
+//        while(data_p[count]!=0)//对于相等非0的数据，应向后措一位。数据为0时，因数组data_p被初始化为0，故不受影响。
+//        /* 注意此处应使用while循环进行判断，若用if条件则超过三个重复值后有0出现 */
+//            count++;
+//        data_p[count]=data[i];//存放到data_p中的对应位置
+//    }
+//
+//    //用于检查当有多个数相同时的情况
+//    i=0,j=n;
+//    while(i<j)
+//    {
+//        if(data_p[i]==0)
+//        {
+//            int temp=i-1;
+//            data_p[i]=data_p[temp];
+//        }//of if
+//        i++;
+//    }//of  while
+//    for(i=0;i<n;i++)//把排序完的数据复制到data中
+//        data[i]=data_p[i];
+//    free(data_p);//释放data_p
+//}
+
+void countSort(int data[],int n) {
+    int i,j;
+    int maxValue = getMaxValue(data, n);
+    int minValue = getMinValue(data, n);
+    int bucketLen = maxValue - minValue + 1;
+    int *bucket = (int*)malloc(sizeof(int)*bucketLen);
+    //初始化bucket(每个值的出现次数为0)
+    for(i=0;i<bucketLen;i++)
+        bucket[i]=0;
+    //统计每个值出现的次数
+    for (i=0;i<n;i++) {
+        int value = data[i];
+        bucket[value-minValue]++;
+    }
+    
+    int sortedIndex =0;
+    for(j=0;j<bucketLen;j++) {
+        while(bucket[j]>0) {
+            data[sortedIndex++] = j + minValue;
+            bucket[j]--;
+        }
+    }
+    free(bucket);
+}
+
+#pragma mark - 桶排序
+void bucketSort(int data[], int n) {
+    // 计算最大值与最小值
+    int maxValue = getMaxValue(data, n);
+    int minValue = getMinValue(data, n);
+    
+    // 计算桶的数量
+    int bucketLen = (maxValue - minValue) / n +1;
+    ArrayList **bucketArr = (ArrayList **)malloc(sizeof(ArrayList*) * bucketLen);
+    for (int i=0; i < bucketLen; i++) {
+        bucketArr[i] = create_arr_list(10);
+    }
+    
+    // 将每个元素放入桶
+    for (int i=0; i<n; i++) {
+        int num = (data[i] - minValue) / n;
+        ArrayList *bucket = bucketArr[num];
+        list_append(bucket, data[i]);
+    }
+    
+    // 对每个桶进行排序
+    for(int i = 0; i < bucketLen; i++){
+        ArrayList *bucket = bucketArr[i];
+        int size = list_size(bucket);
+        heapSort(bucket->arr, size);
+    }
+    
+    // 将桶中的元素赋值到原序列
+    int index = 0;
+    for(int i = 0; i < bucketLen; i++){
+        ArrayList *bucket = bucketArr[i];
+        int size = list_size(bucket);
+        for(int j = 0; j < size; j++){
+            data[index++] = list_get(bucket, j);
+        }
+        
+        free_arr_list(bucket);
+    }
+    
+    free(bucketArr);    
 }

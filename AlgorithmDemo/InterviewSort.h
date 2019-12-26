@@ -49,6 +49,12 @@ void mergeSort(int sourceArr[], int tempArr[], int startIndex, int endIndex);
 // 基数排序
 void radixSort(int data[], int n);
 
+// 计数排序
+void countSort(int data[], int n);
+
+// 桶排序（对计数排序的改进）
+void bucketSort(int data[], int n);
+
 // 堆排序
 void heapSort(int arr[], int len);
 

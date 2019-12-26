@@ -30,7 +30,9 @@
     //int tempArray[10];
     //mergeSort(array, tempArray, 0, 9);
     //radixSort(array, len);
-    heapSort(array, len);
+    //heapSort(array, len);
+    //countSort(array, len);
+    bucketSort(array, len);
     
     for (int i =0; i< 10; i++) {
         NSLog(@"%d \n", array[i]);
