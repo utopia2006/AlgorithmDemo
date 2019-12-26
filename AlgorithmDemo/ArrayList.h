@@ -14,7 +14,7 @@
 typedef struct arr_list {
     int *arr;  // 内部数组
     int index; // 实际数据大小
-    int size;  // 预分配空间大小
+    int capacity;  // 预分配空间大小
 } ArrayList;
 
 ArrayList *create_arr_list(int n);

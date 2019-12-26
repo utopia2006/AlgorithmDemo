@@ -14,16 +14,16 @@
 /**
  创建列表
 
- @param n 容量
+ @param capacity 容量
  @return ArrayList
  */
-ArrayList *create_arr_list(int n) {
-    if (n < 10) {
-        n = 10;
+ArrayList *create_arr_list(int capacity) {
+    if (capacity < 10) {
+        capacity = 10;
     }
     ArrayList *arr = (ArrayList *)malloc(sizeof(ArrayList));
-    arr->arr = (int *)malloc(sizeof(int) * n);
-    arr->size = n;
+    arr->arr = (int *)malloc(sizeof(int) * capacity);
+    arr->capacity = capacity;
     arr->index = 0;
     return arr;
 }
@@ -37,8 +37,8 @@ ArrayList *create_arr_list(int n) {
 void expand_space(ArrayList *arr) {
     int *tmp, i, *p, *q;
     
-    if (arr->index >= arr->size) {
-        tmp = (int *)malloc(sizeof(int) * arr->size * 2);
+    if (arr->index >= arr->capacity) {
+        tmp = (int *)malloc(sizeof(int) * arr->capacity * 2);
         p = arr->arr;
         q = tmp;
         for (i = 0; i < arr->index; i++) {
@@ -46,7 +46,7 @@ void expand_space(ArrayList *arr) {
         }
         free(arr->arr);
         arr->arr = tmp;
-        arr->size = arr->size * 2;
+        arr->capacity = arr->capacity * 2;
     }
 }
 
@@ -202,7 +202,7 @@ int free_arr_list(ArrayList *arr){
  */
 void print_arr_list(ArrayList *arr) {
     int i, t;
-    printf("size=%d,index=%d\n", arr->size, arr->index);
+    printf("capacity=%d,index=%d\n", arr->capacity, arr->index);
     for (i = 0; i < arr->index; i++) {
         t = list_get(arr, i);
         printf("list[%d]=%d\n", i, t);
