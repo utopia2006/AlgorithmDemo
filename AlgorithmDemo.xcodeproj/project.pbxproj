@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		011BB18323B59DCC0099F624 /* Queue.c in Sources */ = {isa = PBXBuildFile; fileRef = 011BB18223B59DCC0099F624 /* Queue.c */; };
+		011BB18623B5AE740099F624 /* RedBlackTree.c in Sources */ = {isa = PBXBuildFile; fileRef = 011BB18523B5AE740099F624 /* RedBlackTree.c */; };
 		018D7C9823A8B63F00EF8E44 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 018D7C9723A8B63F00EF8E44 /* AppDelegate.m */; };
 		018D7C9B23A8B63F00EF8E44 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 018D7C9A23A8B63F00EF8E44 /* ViewController.m */; };
 		018D7C9E23A8B63F00EF8E44 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 018D7C9C23A8B63F00EF8E44 /* Main.storyboard */; };
@@ -42,6 +43,8 @@
 /* Begin PBXFileReference section */
 		011BB18123B59DCC0099F624 /* Queue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Queue.h; sourceTree = "<group>"; };
 		011BB18223B59DCC0099F624 /* Queue.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = Queue.c; sourceTree = "<group>"; };
+		011BB18423B5AE740099F624 /* RedBlackTree.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RedBlackTree.h; sourceTree = "<group>"; };
+		011BB18523B5AE740099F624 /* RedBlackTree.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = RedBlackTree.c; sourceTree = "<group>"; };
 		018D7C9323A8B63F00EF8E44 /* AlgorithmDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AlgorithmDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		018D7C9623A8B63F00EF8E44 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		018D7C9723A8B63F00EF8E44 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -128,6 +131,8 @@
 				01C5DD1C23B4BA6E00204FD6 /* Stack.c */,
 				011BB18123B59DCC0099F624 /* Queue.h */,
 				011BB18223B59DCC0099F624 /* Queue.c */,
+				011BB18423B5AE740099F624 /* RedBlackTree.h */,
+				011BB18523B5AE740099F624 /* RedBlackTree.c */,
 				018D7CCB23A8B84C00EF8E44 /* InterviewSort.h */,
 				018D7CCC23A8B84C00EF8E44 /* InterviewSort.c */,
 				018D7C9C23A8B63F00EF8E44 /* Main.storyboard */,
@@ -288,6 +293,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				018D7C9B23A8B63F00EF8E44 /* ViewController.m in Sources */,
+				011BB18623B5AE740099F624 /* RedBlackTree.c in Sources */,
 				018D7CA623A8B64100EF8E44 /* main.m in Sources */,
 				018D7CCD23A8B84C00EF8E44 /* InterviewSort.c in Sources */,
 				01C5DD1723B4563A00204FD6 /* ArrayList.c in Sources */,
