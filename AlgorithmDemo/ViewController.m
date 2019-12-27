@@ -51,8 +51,10 @@
     int array[10] = {23, 38, 29, 93, 3, 87,24,76,  2, 42};
     int len = (int)sizeof(array)/ sizeof(*array);
     for (int i=0; i< len ; i++) {
-        link_list_insert(pList, array[i], 0);
+        link_list_insert(pList, array[i], -1);
     }
+    link_list_removeAt(pList, 0);
+    
     print_link_list(pList);
 }
 

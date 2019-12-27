@@ -18,6 +18,7 @@
 		018D7CCD23A8B84C00EF8E44 /* InterviewSort.c in Sources */ = {isa = PBXBuildFile; fileRef = 018D7CCC23A8B84C00EF8E44 /* InterviewSort.c */; };
 		01C5DD1723B4563A00204FD6 /* ArrayList.c in Sources */ = {isa = PBXBuildFile; fileRef = 01C5DD1623B4563A00204FD6 /* ArrayList.c */; };
 		01C5DD1A23B4889000204FD6 /* LinkedList.c in Sources */ = {isa = PBXBuildFile; fileRef = 01C5DD1923B4889000204FD6 /* LinkedList.c */; };
+		01C5DD1D23B4BA6E00204FD6 /* Stack.c in Sources */ = {isa = PBXBuildFile; fileRef = 01C5DD1C23B4BA6E00204FD6 /* Stack.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,8 @@
 		01C5DD1623B4563A00204FD6 /* ArrayList.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = ArrayList.c; sourceTree = "<group>"; };
 		01C5DD1823B4889000204FD6 /* LinkedList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LinkedList.h; sourceTree = "<group>"; };
 		01C5DD1923B4889000204FD6 /* LinkedList.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = LinkedList.c; sourceTree = "<group>"; };
+		01C5DD1B23B4BA6E00204FD6 /* Stack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Stack.h; sourceTree = "<group>"; };
+		01C5DD1C23B4BA6E00204FD6 /* Stack.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = Stack.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +121,8 @@
 				01C5DD1623B4563A00204FD6 /* ArrayList.c */,
 				01C5DD1823B4889000204FD6 /* LinkedList.h */,
 				01C5DD1923B4889000204FD6 /* LinkedList.c */,
+				01C5DD1B23B4BA6E00204FD6 /* Stack.h */,
+				01C5DD1C23B4BA6E00204FD6 /* Stack.c */,
 				018D7CCB23A8B84C00EF8E44 /* InterviewSort.h */,
 				018D7CCC23A8B84C00EF8E44 /* InterviewSort.c */,
 				018D7C9C23A8B63F00EF8E44 /* Main.storyboard */,
@@ -283,6 +288,7 @@
 				01C5DD1723B4563A00204FD6 /* ArrayList.c in Sources */,
 				01C5DD1A23B4889000204FD6 /* LinkedList.c in Sources */,
 				018D7C9823A8B63F00EF8E44 /* AppDelegate.m in Sources */,
+				01C5DD1D23B4BA6E00204FD6 /* Stack.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

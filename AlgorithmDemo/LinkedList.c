@@ -76,7 +76,7 @@ int link_list_insert(LinkList* pList,int pData,long index) {
         {
             //后期可以使用快速查找算法优化
             LinkNode *pNode = pList->head;
-            LinkNode *preNode = NULL;
+            LinkNode *prevNode = NULL;
             i=0;
             while(pNode != NULL)
             {
@@ -94,9 +94,9 @@ int link_list_insert(LinkList* pList,int pData,long index) {
                         pCurrentNode->next = pNode;
                     }
                     
-                    // 新节点的pre是谁
-                    if (preNode != NULL) {
-                        preNode->next = pCurrentNode;
+                    // 新节点的prev是谁
+                    if (prevNode != NULL) {
+                        prevNode->next = pCurrentNode;
                     } else {
                         pList->head = pCurrentNode;
                     }
@@ -105,7 +105,7 @@ int link_list_insert(LinkList* pList,int pData,long index) {
                     return 0;
                 }
                 
-                preNode = pNode;
+                prevNode = pNode;
                 pNode = pNode->next;
                 i++;
             }
@@ -124,13 +124,13 @@ void link_list_removeAt(LinkList* pList,unsigned long index)
     }
     int i = 0;
     LinkNode *pNode = pList->head;
-    LinkNode *preNode = NULL;
+    LinkNode *prevNode = NULL;
     while(pNode != NULL)
     {
         if(i == index)
         {
             //找到节点，开始删除
-            if(preNode == NULL) //表示链表头部节点
+            if(prevNode == NULL) //表示链表头部节点
             {
                 LinkNode *head = pList->head;
                 pList->head = head->next;
@@ -140,7 +140,7 @@ void link_list_removeAt(LinkList* pList,unsigned long index)
             else if(pNode->next == NULL)//表示链表尾部节点
             {
                 LinkNode* trial = pList->trail;
-                pList->trail = preNode;
+                pList->trail = prevNode;
                 pList->trail->next = NULL;
                 free(trial);//释放节点
                 pList->length--;
@@ -148,14 +148,14 @@ void link_list_removeAt(LinkList* pList,unsigned long index)
             else
             {
                 //当前节点的上一个节点的下一个节点指向当前节点的下一个节点
-                preNode->next = pNode->next;
+                prevNode->next = pNode->next;
                 free(pNode);
                 pList->length--;
             }
             return;
         }
         
-        preNode = pNode;
+        prevNode = pNode;
         pNode = pNode->next;
         i++;
     }
